@@ -1,4 +1,4 @@
-name : Test_WorkFlow_File
+name : Test WorkFlow File
 on: push
 jobs:
     First_job:
@@ -17,7 +17,7 @@ jobs:
                cat README.md
 
             - name: Generate ASCII Artwork
-              run: cowsay -f lion "Run for your life, man; I am a lion....Roar >> cowsayfile.txt"
+              run: cowsay -f dragon "Run for your life, man; I am a dragon....Roar" >> cowsayfile.txt
 
            #- name: List files
            #  run: ls -lh
