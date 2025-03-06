@@ -3,7 +3,10 @@ on: push
 jobs:
     First_job:
         runs-on: ubuntu-latest
-        steps: 
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+              
             - name: Welcome Message
               run: echo "Welcome To GitHub Actions Jobs"
 
