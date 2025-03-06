@@ -1,4 +1,4 @@
-name : First WorkFlow Example
+name : Test_WorkFlow_File
 on: push
 jobs:
     First_job:
@@ -6,7 +6,7 @@ jobs:
         steps:
             - name: Checkout repo
               uses: actions/checkout@v4
-              
+
             - name: Welcome Message
               run: echo "Welcome To GitHub Actions Jobs"
 
