@@ -10,11 +10,14 @@ jobs:
             - name: Welcome Message
               run: echo "Welcome To GitHub Actions Jobs"
 
-            - name: List and Read files
+            - name: Create, List, and Read files
               run: |
+               touch cowsayfile.txt
                ls -lh
                cat README.md
-               cowsay -f lion "Run for your life, man; I am a lion....Roar >> cowsaylion.txt"
+
+            - name: Generate ASCII
+              run: cowsay -f lion "Run for your life, man; I am a lion....Roar >> cowsayfile.txt"
 
            #- name: List files
            #  run: ls -lh
