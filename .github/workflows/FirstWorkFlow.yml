@@ -16,7 +16,7 @@ jobs:
                ls -lh
                cat README.md
 
-            - name: Generate ASCII
+            - name: Generate ASCII Artwork
               run: cowsay -f lion "Run for your life, man; I am a lion....Roar >> cowsayfile.txt"
 
            #- name: List files
