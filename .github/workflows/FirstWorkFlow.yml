@@ -10,8 +10,13 @@ jobs:
             - name: Welcome Message
               run: echo "Welcome To GitHub Actions Jobs"
 
-            - name: List files
-              run: ls -lh
+            - name: List and Read files
+              run: |
+               ls -lh
+               cat README.md
 
-            - name: Read files
-              run: cat README.md
+           #-name: List files
+           #   run: ls -lh
+
+           #- name: Read files
+           #   run: cat README.md
