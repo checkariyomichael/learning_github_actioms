@@ -1,4 +1,4 @@
-name: Generate ASCII Artwork
+name: Generate ASCII Artwork With Script
 
 on: push
 
@@ -14,7 +14,7 @@ jobs:
 
       - name: Execute shell script
         run: |
-            chmod +x ./acsii-script.shell:
+            chmod +x ./ascii-script.shell:
             ./ascii-script.sh
 
       - name: List Files Again
