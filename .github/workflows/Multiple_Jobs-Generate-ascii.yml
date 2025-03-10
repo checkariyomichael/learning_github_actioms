@@ -1,0 +1,40 @@
+name: Multi-Job ASCII Artwork
+
+on: push
+
+jobs: 
+  Build_Job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: List Repo Files
+        run: ls -lh
+
+      - name: Install Cowsay CMD
+        run: sudo apt install cowsay -y
+
+      - name: Execute Cowsay Command
+        run: cowsay -f dragon "Run for your life, man; I am a dragon....Roar" >> dragon.txt
+
+      - name: Sleeps for 30 secs
+        run: sleep 30
+
+  Test_Job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep for 10 secs
+        run: sleep 10
+
+      - name: Test File Exists
+        run: grep -i "dragon" dragon.txt
+
+  Deploy_Job:
+   runs-on: ubuntu-latest
+   steps:
+      - name: Read file
+        run: cat dragon.txt
+
+      - name: Deploy
+        run: echo "Deploying..."
