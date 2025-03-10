@@ -33,8 +33,8 @@ jobs:
 
   Deploy_Job:
     needs: Test_Job
-   runs-on: ubuntu-latest
-   steps:
+    runs-on: ubuntu-latest
+    steps:
       - name: Read file
         run: cat dragon.txt
 
