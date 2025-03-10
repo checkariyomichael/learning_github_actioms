@@ -21,10 +21,21 @@ jobs:
       - name: Sleeps for 30 secs
         run: sleep 30
 
+      - name: Upload Dragon Text File (artifact)
+        uses: actions/upload-artifacts@v4
+        with:
+          name: Dragon-text-file
+          path: Dragon.txt
+
   Test_Job:
     needs: Build_Job
     runs-on: ubuntu-latest
     steps:
+      - name: Download Dragon Text File (artifact)
+        uses: actions/download-artifacts@v4
+        with:
+          name: Dragon-text-file
+
       - name: Sleep for 10 secs
         run: sleep 10
 
@@ -35,6 +46,11 @@ jobs:
     needs: Test_Job
     runs-on: ubuntu-latest
     steps:
+      - name: Download Dragon Text File 
+        uses: actions/download-artifacts@v4
+        with:
+          name: Dragon-text-file
+
       - name: Read file
         run: cat dragon.txt
 
