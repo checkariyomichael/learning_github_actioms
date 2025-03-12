@@ -37,9 +37,17 @@ on:
 jobs:
     Deploy:
         strategy:
-            matrix:
+            fail-fast: false
+            max-parallel: 2 #specifies max. no. of jobs that can run in parallel
+            matrix:     #The matrix will run 6 jobs in parallel, 2 jobs per OS
                 os: [ubuntu-latest, ubuntu-20.04, windows-latest] #"os" is an arbitrary key/variable word chosen by you
-                images: [hello-world, alpine] 
+                images: [hello-world, alpine]
+                exclude:                    #exclude running the alpine image on the windows OS
+                    - images: alpine
+                      os: windows-latest
+                include:                #include running the amd64/alpine image on the ubuntu-20.04 OS
+                    - images: amd64/alpine
+                      os: ubuntu-20.04
         runs-on: ${{matrix.os}}
         steps:
             - name: Echo Docker Details
