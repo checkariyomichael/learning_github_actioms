@@ -1,3 +1,33 @@
+# name: Matrix Configuration
+
+# on:
+#     push:
+#     workflow_dispatch:
+
+# jobs:
+#     Deploy-on-Ubuntu:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: Echo Docker Details
+#               run: docker info
+
+#             - name: Run Images
+#               run: docker run hello-world
+
+#     Deploy-on-Windows:
+#         runs-on: windows-latest
+#         steps:
+#             - name: Echo Docker Details
+#               run: docker info
+
+#             - name: Run Images
+#               run: docker run hello-world
+
+#====================================================================================================
+#The above jobs can be run in using a single job definition, executed on different operating systems 
+# specified using "Matrix Strategy" instead of creating different jobs for different OS
+#====================================================================================================
+
 name: Matrix Configuration
 
 on:
@@ -5,20 +35,15 @@ on:
     workflow_dispatch:
 
 jobs:
-    Deploy-on-Ubuntu:
-        runs-on: ubuntu-latest
+    Deploy:
+        strategy:
+            matrix:
+                os: [ubuntu-lates, ubuntu-20.04, windows-latest] #"os" is an arbitrary key/variable word chosen by you
+                images: [hello-world, alpine] 
+        runs-on: ${{matrix.os}}
         steps:
             - name: Echo Docker Details
               run: docker info
 
-            - name: Run Images
-              run: docker run hello-world
-
-    Deploy-on-Windows:
-        runs-on: windows-latest
-        steps:
-            - name: Echo Docker Details
-              run: docker info
-
-            - name: Run Images
-              run: docker run hello-world
+            - name: Run Images ${{matrix.os}}
+              run: docker run ${{matrix.images}}
