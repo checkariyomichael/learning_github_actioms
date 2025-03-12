@@ -6,7 +6,7 @@ on:
 
 jobs:
     Deploy-on-Ubuntu:
-        runs-on: ubuntu-lates
+        runs-on: ubuntu-latest
         steps:
             - name: Echo Docker Details
               run: docker info
