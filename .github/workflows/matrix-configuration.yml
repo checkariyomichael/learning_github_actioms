@@ -38,7 +38,7 @@ jobs:
     Deploy:
         strategy:
             matrix:
-                os: [ubuntu-lates, ubuntu-20.04, windows-latest] #"os" is an arbitrary key/variable word chosen by you
+                os: [ubuntu-latest, ubuntu-20.04, windows-latest] #"os" is an arbitrary key/variable word chosen by you
                 images: [hello-world, alpine] 
         runs-on: ${{matrix.os}}
         steps:
